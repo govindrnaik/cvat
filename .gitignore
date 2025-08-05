@@ -68,3 +68,8 @@ cvat-ui/dist
 /**/allure-report*
 /**/allure-results*
 serverless/pytorch/ultralytics/yolov8-*
+
+# Custom rules for YOLOv8 deployment modifications
+*.pt
+# /my_models/
+/test_request.py
