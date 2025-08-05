@@ -51,7 +51,7 @@ metadata:
         { "id": 42, "name": "fork", "type": "rectangle" },
         { "id": 43, "name": "knife", "type": "rectangle" },
         { "id": 44, "name": "spoon", "type": "rectangle" },
-        { "id": 45, "name": "bowl", "type": "rectangle" },
+        { "id": 45, "name": "plate", "type": "rectangle" },
         { "id": 46, "name": "banana", "type": "rectangle" },
         { "id": 47, "name": "apple", "type": "rectangle" },
         { "id": 48, "name": "sandwich", "type": "rectangle" },

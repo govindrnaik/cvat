@@ -67,3 +67,4 @@ cvat-ui/dist
 # produced by allure report
 /**/allure-report*
 /**/allure-results*
+serverless/pytorch/ultralytics/yolov8-*
