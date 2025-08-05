@@ -9,6 +9,9 @@ import sys
 import yaml
 from pathlib import Path
 from ultralytics import YOLO
+import base64
+import requests
+import re
 # Helper to represent literal block strings in pyyaml
 class literal_str(str): pass
 
@@ -127,6 +130,41 @@ def main():
         if process.returncode == 0:
             print("Deployment successful!")
             if process.stdout: print(f"Output:\n{process.stdout}")
+
+            # # 6. Test the deployed function
+            # print(f"\n--- Testing model: {model_file.name} ---")
+            # node_port = 0
+            # # Try to find the port in the deployment output
+            # match = re.search(rf"{function_name}\s+.*?\s+(\d+)\s+", process.stdout)
+            # if match:
+            #     node_port = int(match.group(1))
+            #     print(f"Found function port: {node_port}")
+
+            # if node_port > 0:
+            #     test_image_path = "/home/ubuntu/cvat/original_image (3).png"
+            #     if not os.path.exists(test_image_path):
+            #         print(f"Test image not found at {test_image_path}, skipping test.")
+            #     else:
+            #         try:
+            #             with open(test_image_path, "rb") as f:
+            #                 image_data = base64.b64encode(f.read()).decode("utf-8")
+
+            #             data = {"image": image_data}
+            #             # sudo ufw allow node_port
+            #             os.system(f"sudo ufw allow {node_port}")
+            #             url = f"http://0.0.0.0:{node_port}"
+            #             print(f"Sending test request to {url}...")
+            #             response = requests.post(url, json=data, timeout=300)
+            #             response.raise_for_status() # Raise an exception for bad status codes
+            #             print("Test Response:")
+            #             print(response.json())
+            #         except requests.exceptions.RequestException as e:
+            #             print(f"Error during test request: {e}", file=sys.stderr)
+            #         except Exception as e:
+            #             print(f"An unexpected error occurred during testing: {e}", file=sys.stderr)
+            # else:
+            #     print("Could not determine function port. Skipping test.")
+
         else:
             print("--- Deployment Failed ---", file=sys.stderr)
             if process.stdout: print(f"STDOUT:\n{process.stdout}", file=sys.stderr)
